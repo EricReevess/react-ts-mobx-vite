@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import cs from 'classnames';
+import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react'
 
 import reactLogo from '@assets/react.svg'
@@ -12,16 +11,14 @@ export type Props = {
   className?: string;
 }
 
-
-function Home({ style, className }: Props): JSX.Element {
-
+function Home({ style }: Props): JSX.Element {
   return (
-    <div className="App">
+    <div style={style} className="App">
       <div>
-        <a href="https://vitejs.dev" target="_blank">
+        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
         </a>
-        <a href="https://reactjs.org" target="_blank">
+        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
@@ -39,6 +36,7 @@ function Home({ style, className }: Props): JSX.Element {
       </p>
       <Link to="/about">About</Link>
     </div>
+
   )
 }
 

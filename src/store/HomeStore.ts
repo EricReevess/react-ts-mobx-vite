@@ -4,7 +4,6 @@ class HomeStore {
   @observable count = 0;
   logCount: IReactionDisposer;
 
-
   constructor() {
     makeAutoObservable(this);
 
@@ -22,7 +21,7 @@ class HomeStore {
 
   @action
   incCount = () => {
-    this.count++;
+    this.count += 1;
   }
 
 }

@@ -8,7 +8,7 @@ function App() {
     <Suspense fallback={<span>loading</span>}>
       <Router>
         <Routes>
-          <Route key="/home" path="/" element={ <Home />} />
+          <Route key="/home" path="/" element={<Home />} />
           <Route key="/about" path="/about" element={<About />} />
         </Routes>
       </Router>
