@@ -1,4 +1,4 @@
-import { makeAutoObservable, observable, action, reaction, autorun, when, IReactionDisposer } from 'mobx'
+import { makeAutoObservable, observable, action, reaction, autorun, when, IReactionDisposer } from 'mobx';
 
 class HomeStore {
   @observable count = 0;
@@ -7,23 +7,23 @@ class HomeStore {
   constructor() {
     makeAutoObservable(this);
 
-    this.logCount = autorun(() => { console.log('count:', this.count); })
+    this.logCount = autorun(() => { console.log('count:', this.count); });
     reaction(() => this.count, (count) => {
       if (count > 10) {
-        this.count = 0
+        this.count = 0;
       }
-    })
+    });
 
     when(() => this.count === 10, () => {
-      this.logCount()
-    })
+      this.logCount();
+    });
   }
 
   @action
   incCount = () => {
     this.count += 1;
-  }
+  };
 
 }
 
-export default new HomeStore()
+export default new HomeStore();

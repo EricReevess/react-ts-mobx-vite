@@ -29,6 +29,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': ['warn'],
     '@typescript-eslint/type-annotation-spacing': 'warn',
     camelcase: 'error',
+    semi: ['warn', 'always'],
     'no-plusplus': 'error',
     'no-nested-ternary': 'error',
     'no-invalid-this': 'off',

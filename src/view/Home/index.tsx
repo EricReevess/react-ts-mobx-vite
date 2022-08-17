@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { observer } from 'mobx-react'
+import { observer } from 'mobx-react';
 
-import reactLogo from '@assets/react.svg'
+import reactLogo from '@assets/react.svg';
 
-import './index.scss'
-import store from '@store/HomeStore'
+import './index.scss';
+import store from '@store/HomeStore';
 
 export type Props = {
   style?: React.CSSProperties;
@@ -37,7 +37,7 @@ function Home({ style }: Props): JSX.Element {
       <Link to="/about">About</Link>
     </div>
 
-  )
+  );
 }
 
 export default observer(Home);
