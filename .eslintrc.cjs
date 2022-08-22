@@ -34,6 +34,7 @@ module.exports = {
     'no-nested-ternary': 'error',
     'no-invalid-this': 'off',
     'no-console': 'warn',
+    '@typescript-eslint/no-var-requires': 'off',
     'no-multiple-empty-lines': ['warn', { max: 1 }],
     'no-duplicate-imports': 'error',
     'unused-imports/no-unused-imports': 'error',
@@ -121,4 +122,4 @@ module.exports = {
       version: 'detect'
     }
   }
-}
+};
