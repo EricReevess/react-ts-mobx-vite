@@ -1,0 +1,86 @@
+import React, { useState, useRef, useEffect } from 'react';
+import cs from 'classnames';
+
+import TabNavs from './tab-navs';
+
+import './index.scss';
+
+export type TabItem<T extends React.Key = string> = {
+  id: T;
+  name: string | React.ReactNode;
+  content: React.ReactNode;
+  state?: 'error' | 'warning';
+  disabled?: boolean;
+}
+
+export type Props<T extends React.Key = string> = {
+  items: TabItem<T>[];
+  stretchNav?: boolean;
+  separator?: boolean;
+  className?: string;
+  navsClassName?: string;
+  navTitleClassName?: string;
+  contentClassName?: string;
+  style?: Record<string, unknown>;
+  currentKey?: string | number;
+  onItemClick?: (item: TabItem<T>) => void;
+  onChange?: (key: T) => void;
+}
+
+export default function Tab<T extends React.Key>({
+  items,
+  style,
+  className,
+  navsClassName,
+  navTitleClassName,
+  contentClassName,
+  stretchNav,
+  separator,
+  currentKey,
+  onChange,
+  onItemClick,
+}: Props<T>): JSX.Element {
+  const navsRef = useRef<HTMLDivElement>(null);
+  const [key, setKey] = useState<React.Key>(currentKey || items[0].id);
+
+  useEffect(() => {
+    setKey(currentKey || items[0].id);
+  }, [currentKey]);
+
+  const tabContentRender = (items: TabItem<T>[], key: string | number): React.ReactNode => {
+    return items.find((item) => item.id === key)?.content;
+  };
+
+  const handleNavItemClick = ({ id, disabled }: Pick<TabItem<T>, 'id' | 'disabled'>): void => {
+    if (disabled) {
+      return;
+    }
+    setKey(id);
+    onChange?.(id);
+  };
+
+  return (
+    <div
+      style={style}
+      className={cs('tab-wrapper', className)}
+    >
+      <TabNavs
+        ref={navsRef}
+        navs={items}
+        currentKey={key}
+        stretchNav={stretchNav}
+        separator={separator}
+        navsClassName={navsClassName}
+        navTitleClassName={navTitleClassName}
+        onClick={onItemClick || handleNavItemClick}
+      />
+      <div
+        className={cs('tab-content', contentClassName)}
+      >
+        {tabContentRender(items, key)}
+      </div>
+    </div>
+  );
+}
+
+Tab.TabNavs = TabNavs;

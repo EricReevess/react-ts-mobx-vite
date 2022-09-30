@@ -14,7 +14,7 @@ export type Props = {
 function Home({ style }: Props): JSX.Element {
   return (
     <div style={style} className="App">
-      <div>
+      <div className='flex justify-evenly'>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
         </a>

@@ -33,7 +33,7 @@
       "src/types",
     ]
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", ".tsx"],
   "exclude": ["./dist/", "./node_modules/"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "plugins": [
